@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/26876024/README.md)
+
 # DrinkSafe 💧
 > Real-time drinking water quality monitoring system
 
