@@ -1,0 +1,4 @@
+CREATE INDEX IF NOT EXISTS devices_user_id_idx ON devices (user_id);
+
+ALTER TABLE users
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW();
