@@ -11,7 +11,7 @@ import { requireAuth } from '../middleware/auth.middleware.js';
 const authRouter = Router();
 const cookieOptions = {
   httpOnly: true,
-  sameSite: 'lax',
+  sameSite: env.nodeEnv === 'production' ? 'none' : 'lax',
   secure: env.nodeEnv === 'production',
   maxAge: env.authCookieMaxAgeMs
 };

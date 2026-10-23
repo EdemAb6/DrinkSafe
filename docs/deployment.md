@@ -64,7 +64,7 @@ must use its configured port. Configure:
 ```env
 NODE_ENV=production
 PORT=10000
-CORS_ORIGIN=https://app.example.com
+CORS_ORIGIN=https://drink-safe.vercel.app
 TS_CHANNEL_ID=<server-side-channel-id>
 TS_READ_KEY=<server-side-read-key>
 TS_TIMEOUT_MS=5000
@@ -132,8 +132,12 @@ networking.
 
 ## Cookie and domain considerations
 
-The current authentication cookie is `httpOnly` and `sameSite=lax`. Prefer
-serving the frontend and API from the same parent domain, for example:
+The current authentication cookie is `httpOnly`. In development it uses
+`sameSite=lax`; in production it uses `sameSite=none` and `secure=true` so
+browser requests from the Vercel frontend can include the cookie when the API
+is hosted on Render. Set `CORS_ORIGIN` to the exact deployed frontend origin,
+including the scheme and without a trailing slash. Prefer serving the
+frontend and API from the same parent domain, for example:
 
 ```text
 app.example.com

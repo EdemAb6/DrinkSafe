@@ -36,7 +36,8 @@ Never:
 ## Authentication and cookies
 
 The implemented browser authentication uses bcrypt password hashes and JWTs in
-an `httpOnly`, `sameSite=lax` cookie. For production:
+an `httpOnly` cookie. For production, it uses `sameSite=none` with `secure=true`
+so the cookie can be sent from the Vercel frontend to the Render API:
 
 - Keep `secure` cookies enabled through `NODE_ENV=production`.
 - Use a strong password policy and rate-limit login and registration.
