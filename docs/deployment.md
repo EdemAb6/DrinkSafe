@@ -36,9 +36,15 @@ Deploy the generated `frontend/dist` directory as a static site.
 Set the frontend environment variable:
 
 ```env
-VITE_API_BASE_URL=https://api.example.com/api
+VITE_API_URL=https://drinksafe-backend.onrender.com/api
 VITE_API_TIMEOUT_MS=8000
 ```
+
+`VITE_API_URL` should include the backend `/api` prefix. The frontend falls
+back to the Render URL above when this variable is not set. The older
+`VITE_API_BASE_URL` variable is still accepted for compatibility. The root
+`vercel.json` also rewrites `/api/*` requests to the Render backend, so
+`VITE_API_URL=/api` can be used when same-origin proxying is preferred.
 
 The frontend environment must contain public URLs only. It must not contain
 ThingSpeak read/write keys, database credentials, JWT secrets, or device
